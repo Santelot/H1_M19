@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playbook</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            padding: 20px;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        .banner {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        .banner .title {
+            font-size: 1.2em;
+            display: flex;
+            justify-content: space-between;
+        }
+        .banner .subtitle {
+            font-size: 1em;
+            margin-top: 5px;
+            border-top: 1px solid white;
+            padding-top: 5px;
+        }
+        .content {
+            display: none;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+        }
+        .step-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+        .dialogue {
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px 0;
+            text-align: right;
+            font-style: italic;
+        }
+        .dropdown {
+            margin-bottom: 20px;
+        }
+        .dropdown select {
+            font-size: 1em;
+            padding: 5px;
+            margin-left: 10px;
+        }
+        table { width: 100%; border-collapse: collapse; }
+        td { padding: 8px; border: 1px solid #ddd; vertical-align: top; }
+    </style>
+    <script>
+        function updateActivities() {
+            var selectedTime = document.getElementById('time-select').value;
+            var activities = document.getElementsByClassName('activity');
+
+            document.getElementById('selected-time').innerText = "Tiempo efectivo de clase: " + selectedTime + " minutos";
+
+            for (var i = 0; i < activities.length; i++) {
+                activities[i].style.display = 'block';
+            }
+
+            if (selectedTime === '45') {
+                document.getElementById('activity-2').style.display = 'none';
+            } else if (selectedTime === '40') {
+               document.getElementById('activity-2').style.display = 'none';
+               document.getElementById('activity-5').style.display = 'none';
+               document.getElementById('activity-1').style.display = 'none';
+           }
+        }
+
+        function toggleContent(id) {
+            var content = document.getElementById(id);
+            if (content.style.display === "none") {
+                content.style.display = "block";
+            } else {
+                content.style.display = "none";
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div class="header">
+    <h1>Playbook - H1 - M19</h1>
+</div>
+
+<div class="container">
+    <div class="dropdown">
+        <label for="time-select">Tiempo efectivo de Clase:</label>
+        <select id="time-select" onchange="updateActivities()">
+            <option value="50">50 minutos</option>
+            <option value="45">45 minutos</option>
+            <option value="40">40 minutos</option>
+        </select>
+    </div>
+
+    <h2 id="selected-time" class="time-title">Tiempo efectivo de clase: 50 minutos</h2>
+
+<!-- -------------------------------------------------Espacio para Actividades --------------------------------------------------------- -->
+
+<!-- Actividad 1 -->
+<div id="activity-1" class="activity">
+    <div class="banner" onclick="toggleContent('saludo_ritual')">
+        <div class="title">🎉 Actividad 1: Saludo y Ritual Gnius Club ⏰ Tiempo: 2.5 minutos</div>
+        <div class="subtitle">Preparación para entender las limitaciones de los LMS y estrategias para mitigarlas.</div>
+    </div>
+    <div id="saludo_ritual" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 2 "Bienvenida".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hola, Genios. Hoy vamos a explorar las limitaciones de los Modelos de Lenguaje (LLMs) y cómo podemos trabajar con ellos de manera más efectiva. Aprenderemos a identificar sus fallas y a cómo evitar errores al trabajar con la IA. ¡Prepárense para un aprendizaje profundo!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 3 "¿Cómo Están?".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Antes de comenzar, quiero saber cómo se sienten hoy. Si están listos para desafiar los límites de la IA, levanten los brazos como si fueran un robot. Si necesitan un poco más de tiempo para activarse, toquen su cabeza con ambas manos.”</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 4 "Gracias por Asistir".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora, juntemos nuestras manos en agradecimiento por la oportunidad de aprender juntos. ¡Gracias por asistir, Genios!"</td>
+            </tr>
+             <tr>
+                <td><strong>PASO 4 (0.5 minutos):</strong> Proyectar Diapositiva 5 "Objetivos de la Misión".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Hoy tenemos tres objetivos principales: 1. Comprender las limitaciones de los LLMs y sus implicaciones. 2. Identificar problemas como alucinaciones y sesgos en la IA. 3. Conocer estrategias prácticas para mitigar errores al trabajar con IA."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 2 -->
+<div id="activity-2" class="activity">
+    <div class="banner" onclick="toggleContent('innovacion_dia')">
+        <div class="title">💡 Actividad 2: Innovación del Día ⏰ Tiempo: 3.5 minutos</div>
+        <div class="subtitle">Presentación de una herramienta que ayuda a gestionar la calidad de los datos para mitigar el sesgo.</div>
+    </div>
+    <div id="innovacion_dia" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 6 "Innovación del Día".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, hoy conoceremos una herramienta llamada 'Dataiku', la cual ayuda a gestionar la calidad de los datos para mitigar el sesgo en la IA. Dataiku es una plataforma que permite a los desarrolladores ver cómo la IA aprende y así evitar que cometa errores basados en datos sesgados."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (2 minutos):</strong> Proyectar Diapositiva 7 "Demostración de Dataiku".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora, veamos un video que muestra cómo funciona Dataiku en acción. Presten atención a cómo la plataforma gestiona diferentes tipos de datos para minimizar los errores de la IA. Dataiku no solamente ayuda a identificar y corregir el sesgo, sino que también permite explorar otras maneras en las que los datos pueden llegar a la IA. El video es un excelente ejemplo de cómo las compañías están trabajando con las limitaciones de los modelos de lenguaje para hacerlos más certeros y eficientes."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (1 minuto):</strong> Proyectar Diapositiva 8 "Reflexión sobre Dataiku".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "¿Qué les pareció Dataiku, Genios? Esta herramienta nos muestra una manera de gestionar los datos para mitigar el sesgo y mejorar la precisión de la IA. Es crucial reconocer que la calidad de los datos tiene un gran impacto en el resultado que nos dé la IA y herramientas como Dataiku son cada vez más relevantes en el contexto del desarrollo de la inteligencia artificial."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- -------------------------------------------------Continuación por extensión --------------------------------------------------------- -->
+
+<!-- Actividad 3 -->
+<div id="activity-3" class="activity">
+    <div class="banner" onclick="toggleContent('brain_gym')">
+        <div class="title">🧠 Actividad 3: Brain Gym ⏰ Tiempo: 13.5 minutos</div>
+        <div class="subtitle">Exploración de las limitaciones de los LLMs y estrategias para mitigarlas.</div>
+    </div>
+    <div id="brain_gym" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 9 "Introducción".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, hoy vamos a adentrarnos en las capacidades y limitaciones de los modelos de lenguaje (LLMs) como ChatGPT. Aunque parezcan casi mágicos, estos modelos tienen límites y problemas que es crucial que conozcamos para poder trabajar de manera más eficiente. Entender sus limitaciones nos dará el poder para hacer el uso correcto de las herramientas de Inteligencia Artificial. Pongan atención ya que durante esta explicación se encuentra el dato que usaremos para el Easter Egg al final de la clase."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (0.5 minutos):</strong> Proyectar Diapositiva 10 "¿Qué son los LLMs?".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Los LLMs son modelos de IA entrenados para entender y generar texto similar al humano. Usan grandes cantidades de datos para aprender patrones del lenguaje, y así poder realizar diversas tareas como responder preguntas, escribir ensayos e incluso código. Pero, como cualquier herramienta, tienen limitaciones importantes que debemos considerar. Estos modelos son como grandes bibliotecas que han aprendido muchísimas cosas y pueden realizar tareas impresionantes; pero al igual que una biblioteca, no lo sabe todo y a veces su información puede ser errónea, incompleta o sesgada."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 11 "Limitaciones de los LLMs".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Una de las principales limitaciones de los LLMs es su 'límite de tokens'. Los tokens son las unidades de texto que los modelos procesan, y cada modelo tiene un máximo de tokens que puede procesar simultáneamente. Esto significa que, para tareas que requieren procesar grandes cantidades de información, la IA puede tener problemas o dar respuestas incompletas o truncadas. ¿Se imaginan intentar leer un libro de 500 páginas usando una lupa del tamaño de un sello? Algo así pasa cuando un modelo de lenguaje intenta abarcar mucha información de una sola vez."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (1 minuto):</strong> Proyectar Diapositiva 12 "Hallucinations (Alucinaciones)".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Otro problema común en los LLMs son las 'alucinaciones'. Esto ocurre cuando la IA inventa información que no está basada en datos reales y la presenta como si fuera verdad. Es como si, al leer un libro, la IA interpretara mal alguna información o añadiera detalles que no existen en el texto original, y te la contara como si fuera algo completamente cierto. Por ejemplo, si le preguntamos por algún evento histórico o un personaje poco conocido, el modelo podría inventar detalles para dar una respuesta completa y coherente, pero totalmente falsa. Imaginen que le preguntan a la IA sobre la fundación de una ciudad y ésta inventa datos sobre personajes que nunca existieron o eventos que jamás ocurrieron."</td>
+            </tr>
+            <tr>
+                 <td><strong>PASO 5 (1 minuto):</strong> Proyectar Diapositiva 13 "Bias (Sesgos)".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Los LLMs también pueden mostrar 'sesgos' en sus respuestas. Esto sucede porque aprenden del texto con el que han sido entrenados, que muchas veces contiene prejuicios o perspectivas parciales de la realidad. Por ejemplo, si la información disponible en Internet sobre alguna profesión muestra que es ejercida en mayor medida por un determinado género, la IA podría asignar incorrectamente a esa profesión dicho género cuando no se trata de una regla universal. Es como si la IA leyera un libro con personajes y sus oficios, y asumiera que ciertos roles o actividades son solo para un género, cuando en realidad todos deberían tener las mismas oportunidades. Por eso, es fundamental ser críticos y conscientes de los posibles sesgos que una IA pueda presentar."</td>
+            </tr>
+             <tr>
+                <td><strong>PASO 6 (1 minuto):</strong> Proyectar Diapositiva 14 "Métodos para Mitigar Hallucinations".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora, veamos algunas estrategias para mitigar el problema de las alucinaciones. Primero, siempre debemos verificar la información que nos da un LLM. No debemos tomar como cierto todo lo que la IA nos dice. También podemos pedirle a la IA que justifique sus respuestas y nos dé sus fuentes de información. Si la IA tiene dificultades para justificar alguna información o no tiene referencias, es una señal de que podría estar alucinando. Recuerden: ser escépticos y analíticos es fundamental para no caer en falsedades, aunque estas parezcan tener sentido."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 7 (1 minuto):</strong> Proyectar Diapositiva 15 "Prompt Engineering para Hallucinations".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Una manera de abordar las alucinaciones es a través de un “prompt engineering” más sofisticado. Por ejemplo, podemos indicarle a la IA que muestre incertidumbre al responder y que mencione que podría estar equivocada. Algo como: 'Si no estás seguro de un detalle, dilo explícitamente'. Además, podemos indicarle a la IA que nos diga cuáles son sus fuentes y cómo podemos corroborar los datos. Una buena estrategia es que la IA misma diseñe los pasos que debemos seguir para corroborar la información. Con esto reduciremos la posibilidad de obtener información falsa o inventada, siempre y cuando seamos constantes en la verificación."</td>
+            </tr>
+            <tr>
+                 <td><strong>PASO 8 (1 minuto):</strong> Proyectar Diapositiva 16 "Métodos para Mitigar Bias".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora, vamos a explorar algunas maneras de mitigar el sesgo en los LLMs. Debemos asegurarnos de usar datos diversos para entrenar a los modelos y para generar las respuestas. La IA debe estar expuesta a una variedad de ejemplos, perspectivas y culturas, de esta manera, evitaremos que se sesgue hacia un único punto de vista. Esto es muy importante, pues si la IA solamente recibe información de cierto tipo, ésta asumirá que solamente ese tipo de información es válida, generando sesgos y respuestas injustas."</td>
+            </tr>
+             <tr>
+                <td><strong>PASO 9 (1 minuto):</strong> Proyectar Diapositiva 17 "Prompt Engineering para Bias".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "También podemos usar un prompt engineering más consciente del sesgo. Por ejemplo, podemos indicar a la IA que sea consciente de los sesgos existentes y que intente evitarlos en sus respuestas. Si pedimos a la IA que nos dé una lista de empleos comunes, podemos decirle que 'considere empleos en diferentes industrias, sin sesgo de género ni raza'. De esta manera, estaremos guiando a la IA para que se esfuerce por presentar información imparcial y equitativa, sin sesgos ni prejuicios. Al igual que con las alucinaciones, es fundamental estar siempre verificando las respuestas para garantizar que sea lo más equitativa posible."</td>
+            </tr>
+             <tr>
+                <td><strong>PASO 10 (1 minuto):</strong> Proyectar Diapositiva 18 "Métricas de los LLMs".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Para comprender mejor los LLMs, también es útil conocer algunas de sus métricas. Una de ellas es el 'perplexity', que mide la incertidumbre del modelo al predecir texto. Un perplexity bajo significa que la IA es más certera en su predicción, mientras que un perplexity alto indica que la IA no está segura de su respuesta. Otra métrica importante es la 'BERT Score', que mide la similitud entre el texto generado por el LLM y el texto original. Entre más alto el BERT Score, más preciso es el texto generado. Estas métricas son como los medidores en el tablero de un coche: nos permiten conocer qué tan bien está funcionando el motor."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 11 (1 minuto):</strong> Proyectar Diapositiva 19 "Dónde encontrar información de los LLMs".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Para saber más acerca de las capacidades de los LLMs, es fundamental que busquemos información en las fuentes oficiales. Por ejemplo, si usamos ChatGPT, es fundamental que consultemos los sitios web de OpenAI para obtener datos actualizados sobre los límites y capacidades del modelo. Por lo general, la información que se comparte en redes sociales o blogs es un resumen de fuentes primarias, y no es tan certera como la que puedes encontrar en los sitios web de los desarrolladores. Así como un médico se basa en artículos científicos para conocer los tratamientos más efectivos, nosotros debemos ir a las fuentes primarias para aprender más de los LLMs."</td>
+            </tr>
+            <tr>
+                 <td><strong>PASO 12 (1 minuto):</strong> Proyectar Diapositiva 20 "La Importancia de la Supervisión".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Hemos visto que la IA tiene limitaciones y sesgos, por lo cual la supervisión humana es fundamental al usar LLMs. No podemos depender ciegamente de la IA, sino que debemos verificar, cuestionar y ajustar su información. Usar la IA no significa dejar de pensar, sino que nos permite ser más productivos y eficientes, siempre y cuando nos mantengamos atentos y vigilantes, listos para intervenir cuando sea necesario. Así como un piloto necesita monitorear los instrumentos del avión, nosotros necesitamos verificar las respuestas de la IA."</td>
+            </tr>
+             <tr>
+                <td><strong>PASO 13 (1 minuto):</strong> Proyectar Diapositiva 21 "El Poder del Prompt Engineering".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Para terminar, no olviden que el prompt engineering es una herramienta muy poderosa para lograr que la IA dé respuestas de calidad, y que entienda lo que queremos de ella. Con prompts bien diseñados podemos mitigar las alucinaciones, evitar sesgos y obtener resultados más efectivos. Así como un chef usa las herramientas adecuadas para cocinar, nosotros debemos dominar el prompt engineering para lograr que la IA sea una herramienta útil para nosotros. Recuerden que hemos dicho que el Prompt Engineering es el nuevo lenguaje del siglo XXI y es fundamental que lo dominemos en el presente para tener éxito en el futuro."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 14 (0.5 minutos):</strong> Proyectar Diapositiva 22 "Revisión de Objetivos".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Hasta ahora, hemos logrado dos de nuestros objetivos: 1. Hemos comprendido las limitaciones de los LLMs y sus implicaciones. 2. Hemos identificado problemas comunes como alucinaciones y sesgos.  Vamos a continuar con el último objetivo en el Challenge. ¡Gran trabajo, Genios!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 4 -->
+<div id="activity-4" class="activity">
+    <div class="banner" onclick="toggleContent('state_change')">
+        <div class="title">🧘 Actividad 4: State Change ⏰ Tiempo: 2 minutos</div>
+        <div class="subtitle">Una breve pausa activa para relajación y mejorar la concentración.</div>
+    </div>
+    <div id="state_change" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 23 "Pies en el Piso".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, ahora vamos a realizar una actividad rápida llamada 'Pies en el Piso'. Siéntense con los pies firmemente en el piso y sientan el contacto con el suelo durante 1 minuto. Esto nos ayudará a reconectar y concentrarnos en el presente."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 24 "Cronómetro - 1 Minuto".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> N/A</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 25 "Reflexión sobre Pies en el Piso".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Esta actividad nos ayuda a sentirnos más conectados con el presente. Al enfocarnos en el contacto de nuestros pies con el suelo, promovemos la grounding, que nos permite estar más conscientes de nuestro entorno y mejor preparados para continuar."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 5 -->
+<div id="activity-5" class="activity">
+    <div class="banner" onclick="toggleContent('team_gnius')">
+        <div class="title">👥 Actividad 5: Team Gnius ⏰ Tiempo: 3 minutos</div>
+        <div class="subtitle">Formación de equipos para colaborar en las próximas actividades.</div>
+    </div>
+    <div id="team_gnius" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 26 "Formación de Nuevas Parejas".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, para el reto de hoy vamos a trabajar en parejas, pero deben elegir a alguien con quien no hayan trabajado en la clase anterior. Tienen 1 minuto para encontrar a su nuevo compañero."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 27 "Cronómetro - 1 Minuto".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> N/A</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 28 "Recoger Magic Tablets".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora que ya tienen a su compañero, les pido que un representante de cada pareja vaya a recoger su Magic Tablet. Tienen 1 minuto para hacerlo."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (1 minuto):</strong> Proyectar Diapositiva 29 "Cronómetro - 1 Minuto".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> N/A</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 6 -->
+<div id="activity-6" class="activity">
+    <div class="banner" onclick="toggleContent('challenge')">
+        <div class="title">🚀 Actividad 6: Challenge ⏰ Tiempo: 23.5 minutos</div>
+        <div class="subtitle">Aplicación práctica de técnicas avanzadas de prompting.</div>
+    </div>
+    <div id="challenge" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 30 "Introducción al Challenge".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, hoy vamos a poner en práctica todo lo que hemos aprendido sobre las limitaciones de los LLMs para escribir un ensayo histórico preciso. Aunque la IA puede generar textos convincentes, a veces puede inventar detalles o afirmar datos incorrectos. Su tarea es desarrollar una estrategia para mitigar estos errores y asegurar la veracidad de la información. Recuerden que para este reto deben usar como fuente de información principal a ChatGPT. No pueden buscar información en otros sitios web ni libros."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (0.5 minutos):</strong> Proyectar Diapositiva 31 "Explicación del Challenge".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Su reto es redactar un ensayo bien documentado sobre un evento clave en la historia de México: el Grito de Dolores y el inicio de la Guerra de Independencia. Comenzarán interactuando con la IA sin dar instrucciones especiales, para observar los errores que pueda cometer. Luego, refinarán sus prompts para pedirle a la IA que exprese incertidumbre, solicite disclaimers y proporcione fuentes para poder verificar la información. Este ejercicio les mostrará cómo superar las limitaciones de los LLMs y producir un texto confiable."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 32 "Etapa 1: Interacción Inicial".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Primero, van a pedirle a la IA que escriba un párrafo sobre el Grito de Dolores, incluyendo la fecha en que ocurrió y quiénes fueron sus principales líderes. No le den ninguna instrucción especial sobre cómo manejar la incertidumbre. Simplemente pídanle que escriba el párrafo con la información que tiene. Observen cuidadosamente la información que genera la IA e identifiquen cualquier dato sospechoso, falso o impreciso."</td>
+           </tr>
+            <tr>
+                <td><strong>PASO 4 (3 minutos):</strong> Proyectar Diapositiva 33 "Cronómetro - 3 Minutos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> N/A</td>
+            </tr>
+            <tr>
+               <td><strong>PASO 5 (0.5 minutos):</strong> Proyectar Diapositiva 34 "Etapa 2: Planificación de la Estrategia".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora, van a reflexionar sobre la respuesta de la IA y van a planificar una estrategia para el siguiente prompt. Lean el material que les proporciono sobre alucinaciones y cómo indicarle a la IA que muestre incertidumbre. Decidan cómo instruir a la IA para que exprese incertidumbre, utilice disclaimers y sugiera métodos para verificar la información. Es momento de planificar una estrategia efectiva."</td>
+            </tr>
+             <tr>
+                <td><strong>PASO 6 (2 minutos):</strong> Proyectar Diapositiva 35 "Cronómetro - 2 Minutos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> N/A</td>
+            </tr>
+            <tr>
+                 <td><strong>PASO 7 (0.5 minutos):</strong> Proyectar Diapositiva 36 "Etapa 3: Refinación del Prompt".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Usando la información de la etapa anterior, ahora deberán refinar su prompt. Pídanle a la IA que actúe como un historiador cuidadoso que reconoce sus incertidumbres y que explique el Grito de Dolores, pero si no está segura de algún dato que lo diga explícitamente, y que además sugiera formas de verificar las fechas y datos clave. Pueden usar los ejemplos de los materiales que les proporcioné. El objetivo es que la IA sea más transparente y honesta sobre las limitaciones de su conocimiento."</td>
+           </tr>
+            <tr>
+                <td><strong>PASO 8 (3 minutos):</strong> Proyectar Diapositiva 37 "Cronómetro - 3 Minutos".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> N/A</td>
+            </tr>
+             <tr>
+               <td><strong>PASO 9 (0.5 minutos):</strong> Proyectar Diapositiva 38 "Etapa 4: Nueva Interacción".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Introduzcan el nuevo prompt en ChatGPT y analicen su respuesta. ¿La IA ahora muestra incertidumbre donde antes no lo hacía? ¿Proporciona referencias o sugiere cómo verificar la información? Comparen esta respuesta con el párrafo original e identifiquen dónde se produjeron las mejoras en términos de honestidad y transparencia."</td>
+            </tr>
+            <tr>
+                 <td><strong>PASO 10 (3 minutos):</strong> Proyectar Diapositiva 39 "Cronómetro - 3 Minutos".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> N/A</td>
+            </tr>
+            <tr>
+                 <td><strong>PASO 11 (0.5 minutos):</strong> Proyectar Diapositiva 40 "Etapa 5: Verificación Externa".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora, van a verificar la información de la IA con fuentes externas confiables. Usen los materiales proporcionados para corroborar datos, fechas y nombres.  Si la IA incluyó disclaimers sobre datos inciertos, corrobórenlos usando estas fuentes externas. Esto les demostrará la importancia de no confiar ciegamente en la IA y de verificar la información por nuestra propia cuenta. Para éste paso, pueden consultar fuentes de información en Internet."</td>
+           </tr>
+           <tr>
+                <td><strong>PASO 12 (3 minutos):</strong> Proyectar Diapositiva 41 "Cronómetro - 3 Minutos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> N/A</td>
+            </tr>
+             <tr>
+                 <td><strong>PASO 13 (0.5 minutos):</strong> Proyectar Diapositiva 42 "Etapa 6: Finalización del Ensayo".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Para finalizar, incorporen los datos verificados a su ensayo. Al final, deben mencionar en su ensayo dónde usaron la ayuda de la IA y dónde tuvieron que verificar datos con fuentes externas. Expliquen qué aprendieron de todo este proceso y cómo lograron superar las limitaciones de la IA. Al concluir el ensayo, reflexionen en lo importante que es la verificación y qué nuevas estrategias pueden implementar para la próxima."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 14 (5 minutos):</strong> Proyectar Diapositiva 43 "Cronómetro - 5 Minutos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> N/A</td>
+            </tr>
+            <tr>
+               <td><strong>PASO 15 (0.5 minutos):</strong> Proyectar Diapositiva 44 "Presentación de Resultados".</td>
+               <td><strong>DIÁLOGO SUGERIDO:</strong> "Vamos a seleccionar a dos parejas al azar que compartan su ensayo final y qué estrategias emplearon para lidiar con las limitaciones de la IA. Vamos a escuchar primero a la primera pareja."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 16 (2 minutos):</strong> Proyectar Diapositiva 45 "Presentaciones".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Adelante, primera pareja. Compartan sus resultados con el resto de la clase."</td>
+            </tr>
+             <tr>
+                <td><strong>PASO 17 (0.5 minutos):</strong> Proyectar Diapositiva 46 "Revisión de Objetivos".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Hemos completado todos nuestros objetivos: 1. Comprendimos las limitaciones de los LLMs y sus implicaciones. 2. Identificamos problemas como alucinaciones y sesgos. 3. Conocimos estrategias prácticas para mitigar errores al trabajar con IA. ¡Gran trabajo, Genios!"</td>
+            </tr>
+             <tr>
+                <td><strong>PASO 18 (0.5 minutos):</strong> Proyectar Diapositiva 47 "You've got Mon-e".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "¡Felicidades, Genios! Han trabajado muy bien el día de hoy. Aquí está su recompensa: ¡Han ganado Mon-e!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 7 -->
+<div id="activity-7" class="activity">
+    <div class="banner" onclick="toggleContent('easter_egg')">
+        <div class="title">🌟 Actividad 7: Easter Egg ⏰ Tiempo: 2 minutos</div>
+        <div class="subtitle">Un momento para gamificar el aprendizaje con una pregunta sorpresa.</div>
+    </div>
+    <div id="easter_egg" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 48 "Easter Egg".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, es hora de ver quién ha estado prestando atención. La siguiente diapositiva tiene una pregunta sobre algo que discutimos hoy. Voy a premiar con Mon-e a las tres primeras personas que me den la respuesta correcta. Recuerden la dinámica: en cuanto pase a la siguiente diapositiva, lean la pregunta y si saben la respuesta, levanten la mano. No digan la respuesta en voz alta, solo levanten la mano. Yo seleccionaré a 3 de ustedes. ¿Listos?"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (0.5 minutos):</strong> Proyectar Diapositiva 49 "Pregunta del Easter Egg".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Aquí va la pregunta: ¿Cuál era la comparación que utilicé para representar un problema del modelo cuando éste intenta procesar mucha información de golpe? Uno, dos, tres. Levanten la mano si saben la respuesta. ¡Muy bien! Vamos a escuchar lo que tienen que decir."</td>
+            </tr>
+            <tr>
+               <td><strong>PASO 3 (1 minuto):</strong> Proyectar Diapositiva 50 "Respuesta Correcta".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Uno, ven y dime la respuesta al oído. Ahora tú, dos. Y por último, el tres. La respuesta correcta es: 'Intentar leer un libro de 500 páginas usando una lupa del tamaño de un sello'. ¡Muy bien, a los ganadores les toca Mon-e!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 8 -->
+<div id="activity-8" class="activity">
+    <div class="banner" onclick="toggleContent('honor_the_dojo')">
+        <div class="title">🙏 Actividad 8: Honor The Dojo ⏰ Tiempo: 1 minuto</div>
+        <div class="subtitle">Cierre y organización del espacio de aprendizaje.</div>
+    </div>
+    <div id="honor_the_dojo" class="content">
+        <table>
+             <tr>
+                 <td><strong>PASO 1 (1 minuto):</strong> Proyectar Diapositiva 51 "Honor The Dojo".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, hemos llegado al final de nuestra misión de hoy. Antes de irnos, les pido que cada equipo pase al frente y me entregue las Magic Tablets. ¡Gracias por su gran trabajo!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- -------------------------------------------------Espacio para Actividades --------------------------------------------------------- -->
+
+</div>
+
+</body>
+</html>
